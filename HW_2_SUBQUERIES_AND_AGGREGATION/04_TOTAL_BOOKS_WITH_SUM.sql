@@ -22,4 +22,4 @@ SELECT NULL AS facid,
 FROM hw_2.bookings
 WHERE TO_CHAR(starttime, 'YYYY-MM-DD') LIKE '2012-%'
 
-ORDER BY facid, month;
+ORDER BY facid, month; --сортирует всю объединённую
