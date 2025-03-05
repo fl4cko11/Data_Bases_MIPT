@@ -1,6 +1,6 @@
 # Концептуальная модель:
 
-![Концептуальная модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Conceptual_model/Conceptual_Model.png)
+![Концептуальная модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Conceptual_model/Conceptual_Model_.png)
 
 ## Cущности:
 1) **Клиенты** - данные о зарегистрированных клиентах
@@ -23,7 +23,7 @@
 
 # Логическая модель:
 
-![Логиеская модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Logic_model/Logic_Model.png)
+![Логиеская модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Logic_model/Logic_Model_.png)
 
 ## Обоснование PK:
 1) **Клиенты** - уникальному client_id соответсвует уникальная информация
