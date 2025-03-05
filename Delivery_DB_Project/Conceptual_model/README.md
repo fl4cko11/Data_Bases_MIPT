@@ -1,6 +1,4 @@
-<p align="center">
-    <img src="[URL_изображения](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Conceptual_model/Conceptual_Model.png)" alt="Концептуальная модель" />
-</p>
+![Концептуальная модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Conceptual_model/Conceptual_Model.png)
 
 # Cущности:
 1) **Клиенты** - данные о зарегистрированных клиентах
