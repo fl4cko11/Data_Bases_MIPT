@@ -23,8 +23,6 @@
 
 # Логическая модель:
 
-![Логическая модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Logic_model/Logic_Model__.png)
-
 ## Обоснование PK:
 1) **Клиенты** - уникальному client_id соответсвует уникальная информация
 2) **Курьеры** - уникальному courier_id соответсвует уникальная информация
@@ -41,5 +39,3 @@
 3) В каждой таблице нетранзитивные связи => **3НФ** (*по построению*)
 
 # Физическая модель:
-
-![Физическая модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Physic_Model/Physic_Model.png)
