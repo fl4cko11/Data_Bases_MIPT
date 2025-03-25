@@ -23,7 +23,7 @@
 
 # Логическая модель:
 
-![Логиеская модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Logic_model/Logic_Model_.png)
+![Логическая модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Logic_model/Logic_Model_.png)
 
 ## Обоснование PK:
 1) **Клиенты** - уникальному client_id соответсвует уникальная информация
@@ -39,3 +39,7 @@
 1) Все значения атомарны => **1НФ**
 2) В каждой таблице неключевые атрибуты функционально полностью зависят от ключа => **2НФ** (*по построению*)
 3) В каждой таблице нетранзитивные связи => **3НФ** (*по построению*)
+
+# Физическая модель:
+
+![Физическая модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Physic_Model/Physic_Model.png)
