@@ -23,7 +23,7 @@
 
 # Логическая модель:
 
-![Логическая модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Logic_model/Logic_Model_.png)
+![Логическая модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Logic_model/Logic_Model__.png)
 
 ## Обоснование PK:
 1) **Клиенты** - уникальному client_id соответсвует уникальная информация
