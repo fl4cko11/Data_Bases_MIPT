@@ -10,7 +10,7 @@ CREATE TABLE dp.Cafes (
     cafe_id int PRIMARY KEY,
     address TEXT NOT NULL,
     name TEXT NOT NULL,
-    raitng int NOT NULL
+    rating int NOT NULL
 );
 
 CREATE TABLE dp.Bikes (
@@ -46,8 +46,7 @@ CREATE TABLE dp.H_Orders (
     client_id int NOT NULL,
     quantity int NOT NULL,
     date DATE,
-    PRIMARY KEY(order_id, order_item, date),
-    FOREIGN KEY(order_id, order_item, date) REFERENCES dp.A_Orders(order_id, order_item, date)
+    PRIMARY KEY(order_id, order_item, date)
 );
 
 CREATE TABLE dp.Orders_in_cafe (
