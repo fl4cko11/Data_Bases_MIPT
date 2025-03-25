@@ -46,6 +46,8 @@ CREATE TABLE dp.H_Orders (
     client_id int NOT NULL,
     quantity int NOT NULL,
     date DATE,
+    cafe_id int NOT NULL,
+    courier_id int NOT NULL,
     PRIMARY KEY(order_id, order_item, date)
 );
 

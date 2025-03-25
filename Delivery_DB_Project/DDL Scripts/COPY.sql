@@ -43,7 +43,7 @@ WITH (
     HEADER true
 );
 
-\copy dp.h_orders (order_id, order_item, client_id, quantity, date)
+\copy dp.h_orders (order_id, order_item, client_id, quantity, date, cafe_id, courier_id)
 FROM '/home/vladh/git-repos/Data_Bases_MIPT/Delivery_DB_Project/Data_csv/h_orders.csv'
 WITH (
     FORMAT CSV,
