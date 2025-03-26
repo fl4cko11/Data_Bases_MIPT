@@ -25,7 +25,7 @@ WITH (
     HEADER true
 );
 
-\copy dp.couriers (courier_id, bike_id, passport, bank_details, location, status)
+\copy dp.couriers (courier_id, bike_id, passport, bank_details)
 FROM '/home/vladh/git-repos/Data_Bases_MIPT/Delivery_DB_Project/Data_csv/couriers.csv'
 WITH (
     FORMAT CSV,
@@ -61,7 +61,7 @@ WITH (
     HEADER true
 );
 
-\copy dp.couriers_on_work (order_id, order_item, date, cafe_id, courier_id)
+\copy dp.couriers_on_work (order_id, order_item, date, cafe_id, courier_id, location, status)
 FROM '/home/vladh/git-repos/Data_Bases_MIPT/Delivery_DB_Project/Data_csv/couriers_on_work.csv'
 WITH (
     FORMAT CSV,

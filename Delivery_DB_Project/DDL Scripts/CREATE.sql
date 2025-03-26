@@ -3,21 +3,24 @@ CREATE TABLE dp.Clients (
     address TEXT NOT NULL,
     name TEXT NOT NULL,
     birth DATE NOT NULL,
-    gender CHAR
+    gender CHAR,
+    CONSTRAINT check_ CHECK ((gender = 'M' OR gender = 'F') AND birth < CURRENT_DATE)
 );
 
 CREATE TABLE dp.Cafes (
     cafe_id int PRIMARY KEY,
     address TEXT NOT NULL,
     name TEXT NOT NULL,
-    rating int NOT NULL
+    rating int NOT NULL,
+    CONSTRAINT check_ CHECK (rating >= 0)
 );
 
 CREATE TABLE dp.Bikes (
     bike_id int PRIMARY KEY,
     bike_name TEXT NOT NULL,
     price int NOT NULL,
-    date_of_capture DATE NOT NULL
+    date_of_capture DATE NOT NULL,
+    CONSTRAINT check_ CHECK (price > 0 AND date_of_capture < CURRENT_DATE)
 );
 
 CREATE TABLE dp.Couriers (
@@ -25,8 +28,6 @@ CREATE TABLE dp.Couriers (
     bike_id int,
     passport TEXT NOT NULL,
     bank_details TEXT NOT NULL,
-    location TEXT NOT NULL,
-    status BOOLEAN NOT NULL,
     FOREIGN KEY(bike_id) REFERENCES dp.Bikes(bike_id)
 );
 
@@ -37,7 +38,8 @@ CREATE TABLE dp.A_Orders (
     quantity int NOT NULL,
     date DATE,
     PRIMARY KEY(order_id, order_item, date),
-    FOREIGN KEY(client_id) REFERENCES dp.Clients(client_id)
+    FOREIGN KEY(client_id) REFERENCES dp.Clients(client_id),
+    CONSTRAINT check_ CHECK (quantity > 0 AND date < CURRENT_DATE)
 );
 
 CREATE TABLE dp.H_Orders (
@@ -48,7 +50,8 @@ CREATE TABLE dp.H_Orders (
     date DATE,
     cafe_id int NOT NULL,
     courier_id int NOT NULL,
-    PRIMARY KEY(order_id, order_item, date)
+    PRIMARY KEY(order_id, order_item, date),
+    CONSTRAINT check_ CHECK (quantity > 0 AND date < CURRENT_DATE)
 );
 
 CREATE TABLE dp.Orders_in_cafe (
@@ -67,6 +70,8 @@ CREATE TABLE dp.Couriers_on_work (
     date DATE,
     courier_id int,
     cafe_id int,
+    location TEXT,
+    status BOOLEAN,
     PRIMARY KEY(order_id, order_item, date, cafe_id, courier_id),
     FOREIGN KEY(order_id, order_item, date, cafe_id) REFERENCES dp.Orders_in_cafe(order_id, order_item, date, cafe_id),
     FOREIGN KEY(courier_id) REFERENCES dp.Couriers(courier_id)

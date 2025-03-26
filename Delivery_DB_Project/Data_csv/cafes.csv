@@ -1,4 +1,31 @@
-Cafe_id,Address,Name,Rating
-1,"111 Coffee St","Кофейня \"Лето\"",5
-2,"222 Tea Rd","Чайный дом \"Осень\"",4
-3,"333 Snack Ave","Снэк-бар \"Зима\"",3
+cafe_id,address,name,rating
+1,"321 Coffee Ave, Cityville","Cafe A",4
+2,"432 Coffee Blvd, Townsville","Cafe B",5
+3,"543 Coffee Rd, Villagetown","Cafe C",3
+4,"654 Coffee Ln, Hamlet","Cafe D",2
+5,"765 Coffee Path, Cityville","Cafe E",5
+6,"876 Coffee Way, Townsville","Cafe F",4
+7,"987 Coffee Pl, Villagetown","Cafe G",1
+8,"098 Brew St, Hamlet","Cafe H",3
+9,"210 Brew Ave, Cityville","Cafe I",4
+10,"321 Brew Blvd, Townsville","Cafe J",2
+11,"432 Brew Rd, Villagetown","Cafe K",5
+12,"543 Brew Ln, Hamlet","Cafe L",4
+13,"654 Brew Path, Cityville","Cafe M",3
+14,"765 Brew Way, Townsville","Cafe N",5
+15,"876 Brew Pl, Villagetown","Cafe O",1
+16,"987 Brew St, Hamlet","Cafe P",4
+17,"098 Roast Ave, Cityville","Cafe Q",3
+18,"210 Roast Blvd, Townsville","Cafe R",2
+19,"321 Roast Rd, Villagetown","Cafe S",4
+20,"432 Roast Ln, Hamlet","Cafe T",5
+21,"543 Roast Path, Cityville","Cafe U",4
+22,"654 Roast Way, Townsville","Cafe V",3
+23,"765 Roast Pl, Villagetown","Cafe W",5
+24,"876 Roast St, Hamlet","Cafe X",2
+25,"987 Brew Ave, Cityville","Cafe Y",4
+26,"098 Brew Blvd, Townsville","Cafe Z",3
+27,"210 Brew Rd, Villagetown","Cafe AA",5
+28,"321 Brew Ln, Hamlet","Cafe AB",4
+29,"432 Brew Path, Cityville","Cafe AC",3
+30,"543 Brew Way, Townsville","Cafe AD",5
