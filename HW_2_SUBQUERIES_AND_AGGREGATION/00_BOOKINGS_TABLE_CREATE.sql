@@ -7,7 +7,7 @@ CREATE TABLE hw_2.bookings(
 );
 
 \copy HW_2.bookings (bookid, facid, memid, starttime, slots)
-FROM '/home/vladh/git-repos/Data_Bases_MIPT/HW_2_SUBQUERIES/bookings.csv'
+FROM '/home/vladh/git-repos/Data_Bases_MIPT/HW_2_SUBQUERIES_AND_AGGREGATION/bookings.csv'
 WITH (
     FORMAT CSV,
     DELIMITER ',',

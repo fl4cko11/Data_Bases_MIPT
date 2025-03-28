@@ -10,7 +10,7 @@ CREATE TABLE hw_2.members(
 );
 
 \copy HW_2.members (memid, surname, firstname, address, zipcode, telephone, recommendedby, joindate)
-FROM '/home/vladh/git-repos/Data_Bases_MIPT/HW_2_SUBQUERIES/members.csv'
+FROM '/home/vladh/git-repos/Data_Bases_MIPT/HW_2_SUBQUERIES_AND_AGGREGATION/members.csv'
 WITH (
     FORMAT CSV,
     DELIMITER ',',
