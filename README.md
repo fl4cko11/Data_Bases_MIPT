@@ -3,6 +3,6 @@
 Курс сопровождался **проектированием собственной базы данных**: [База Данных для службы доставки](https://github.com/fl4cko11/Data_Bases_MIPT/tree/main/Delivery_DB_Project)
 ## Задачи:
 Курс сопровождался задачами по различным аспектам классического SQL:
-1) [Простые запросы](https://github.com/fl4cko11/Data_Bases_MIPT/tree/main/HW_1_SIMPLE_QUERIES)
-2) [Агрегации, группировки, соединения, подзапросы](https://github.com/fl4cko11/Data_Bases_MIPT/tree/main/HW_2_SUBQUERIES_AND_AGGREGATION)
-3) [Оконные функции и CTE](https://github.com/fl4cko11/Data_Bases_MIPT/tree/main/HW_3_OVERS_AND_CTE)
+1) [Простые запросы](https://github.com/fl4cko11/Data_Bases_MIPT/tree/main/HW/HW_1_SIMPLE_QUERIES)
+2) [Агрегации, группировки, соединения, подзапросы](https://github.com/fl4cko11/Data_Bases_MIPT/tree/main/HW/HW_2_SUBQUERIES_AND_AGGREGATION)
+3) [Оконные функции и CTE](https://github.com/fl4cko11/Data_Bases_MIPT/tree/main/HW/HW_3_OVERS_AND_CTE)
