@@ -1,6 +1,6 @@
 # Концептуальная модель:
 
-![Концептуальная модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Conceptual_model/Conceptual_Model_.png)
+![Концептуальная модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/docs/Conceptual_Model_.png)
 
 ## Cущности:
 1) **Клиенты** - данные о зарегистрированных клиентах
@@ -23,7 +23,7 @@
 
 # Логическая модель:
 
-![Логическая модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Logic_model/Logic_Model__.png)
+![Логическая модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/docs/Logic_Model__.png)
 
 
 ## Обоснование PK:
@@ -43,4 +43,4 @@
 
 # Физическая модель:
 
-![Логическая модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/Physic_Model/Physic_Model.png)
+![Логическая модель](https://github.com/fl4cko11/Data_Bases_MIPT/blob/main/Delivery_DB_Project/docs/Physic_Model.png)

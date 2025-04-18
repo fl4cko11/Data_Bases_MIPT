@@ -1,4 +1,4 @@
-SELECT firstname, surname, hours, RANK() OVER (ORDER BY hours DESC) AS rank
+SELECT firstname, surname, hours, RANK() OVER (ORDER BY hours DESC) AS rank --rank на основе агрегатной => подзапрос
 FROM (
     SELECT --подзапрос, чтобы rank() располагал информацией о hours
         cd.members.firstname, 
