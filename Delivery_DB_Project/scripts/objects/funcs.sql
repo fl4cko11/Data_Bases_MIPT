@@ -68,24 +68,12 @@ BEGIN
     SELECT (o).Order_id, (o).Cafe_id
     FROM unnest(orders) AS o;
 
+    INSERT INTO dp.active_couriers (order_id, courier_id, cafe_id)
+    SELECT (o).order_id, (o).courier_id, (o).cafe_id
+    FROM unnest(orders) AS o;
+
     INSERT INTO dp.h_orders (Order_id, Order_item, Client_id, Quantity, Date, cafe_id, courier_id)
     SELECT (o).Order_id, (o).Order_item, (o).Client_id, (o).Quantity, (o).Date, (o).cafe_id, (o).courier_id
     FROM unnest(orders) AS o; --unnest преобразует массив в таблицу
-END;
-$$;
-
-CREATE TYPE dp.courier_type AS (
-    order_id INTEGER,
-    courier_id INTEGER,
-    cafe_id INTEGER
-);
-
-CREATE OR REPLACE PROCEDURE dp.add_couriers(couriers dp.courier_type[])
-LANGUAGE plpgsql
-AS $$
-BEGIN
-    INSERT INTO dp.active_couriers (order_id, courier_id, cafe_id)
-    SELECT (c).order_id, (c).courier_id, (c).cafe_id
-    FROM unnest(couriers) AS c;
 END;
 $$;
