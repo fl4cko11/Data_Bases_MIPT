@@ -1,9 +1,9 @@
-SELECT passport
+SELECT name
 FROM (
-    SELECT dp.couriers.passport AS passport, COUNT(dp.couriers_on_work.courier_id) AS count
-    FROM dp.couriers_on_work
-    LEFT JOIN dp.couriers ON (dp.couriers_on_work.courier_id = dp.couriers.courier_id)
-    GROUP BY dp.couriers.passport, dp.couriers_on_work.courier_id
+    SELECT dp.couriers.name AS name, COUNT(dp.active_couriers.courier_id) AS count
+    FROM dp.active_couriers
+    LEFT JOIN dp.couriers ON (dp.active_couriers.courier_id = dp.couriers.courier_id)
+    GROUP BY dp.couriers.name, dp.active_couriers.courier_id
     ORDER BY count DESC
     LIMIT 1
 );
