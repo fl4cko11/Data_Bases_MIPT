@@ -8,7 +8,7 @@ FROM
 INNER JOIN 
     dp.H_Orders h ON c.client_id = h.client_id
 WHERE 
-    EXISTS (
+    EXISTS ( --притянуто за уши
         SELECT 1 
         FROM dp.Cafes cafe 
         WHERE cafe.cafe_id = 1
