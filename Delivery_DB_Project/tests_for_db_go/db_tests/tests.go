@@ -7,6 +7,11 @@ type queryTests struct {
 }
 
 type procedureTests struct {
-	TestName    string
-	CallCommand string
+	testName    string
+	callCommand string
+}
+
+func startsWithSelect(query string) bool {
+	// Простая проверка, чтобы понять, SELECT это или нет (можно сделать строчными для безопасности)
+	return len(query) >= 6 && (query[:6] == "SELECT" || query[:6] == "select")
 }

@@ -19,14 +19,23 @@ RETURNS REAL
 LANGUAGE plpgsql
 AS $$
 DECLARE
-  result REAL;  -- тип с плавающей точкой
+  numerator REAL;
+  denominator REAL;  -- тип с плавающей точкой
 BEGIN
-  SELECT COUNT(order_id)::REAL / COUNT(*)::REAL 
-  INTO result
+  SELECT COUNT(*)::REAL
+  INTO denominator
+  FROM dp.orders_in_cafe;
+
+  SELECT COUNT(cafe_id)::REAL
+  INTO numerator
   FROM dp.orders_in_cafe
   WHERE cafe_id = finding_cafe_id;
+
+  IF denominator = 0 THEN
+    RETURN 0;  -- защититься от деления на ноль
+  END IF;
   
-  RETURN result;
+  RETURN numerator/denominator;
 END;
 $$;
 
@@ -35,14 +44,23 @@ RETURNS REAL
 LANGUAGE plpgsql
 AS $$
 DECLARE
-  result REAL;  -- тип с плавающей точкой
+  numerator REAL;
+  denominator REAL;  -- тип с плавающей точкой
 BEGIN
-  SELECT COUNT(client_id)::REAL / COUNT(*)::REAL 
-  INTO result
+  SELECT COUNT(*)::REAL
+  INTO denominator
+  FROM dp.h_orders;
+
+  SELECT COUNT(client_id)::REAL
+  INTO numerator
   FROM dp.h_orders
   WHERE client_id = finding_client_id;
+
+  IF denominator = 0 THEN
+    RETURN 0;  -- защититься от деления на ноль
+  END IF;
   
-  RETURN result;
+  RETURN numerator/denominator;
 END;
 $$;
 

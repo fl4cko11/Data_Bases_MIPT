@@ -10,8 +10,8 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-func TestQueries(t *testing.T) {
-	dbURL := "postgres://postgres:_________@localhost:5432/hw_mipt_db_2025"
+func TestAllQueries(t *testing.T) {
+	dbURL := "postgres://postgres:gbfh78psql@localhost:5432/hw_mipt_db_2025"
 	ctx := context.Background()
 
 	conn, err := pgx.Connect(ctx, dbURL)
