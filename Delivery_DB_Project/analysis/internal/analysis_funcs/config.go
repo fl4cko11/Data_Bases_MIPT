@@ -9,3 +9,8 @@ type CafeRaiting struct {
 	CafeCount int
 	Rating    int
 }
+
+type CourierCafe struct {
+	CourierId int
+	CafeId    int
+}

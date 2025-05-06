@@ -62,3 +62,31 @@ func ScanDBCafeRating(dbURL string) []CafeRaiting {
 	}
 	return data
 }
+
+func ScanDBCourierCafeRelation(dbURL string) []CourierCafe {
+	ctx := context.Background()
+
+	conn, err := pgx.Connect(ctx, dbURL)
+	if err != nil {
+		log.Fatalf("Не удалось подключиться к базе данных: %v", err)
+	}
+	defer conn.Close(ctx)
+
+	rows, err := conn.Query(ctx, "SELECT courier_id, cafe_id FROM dp.active_couriers;")
+	if err != nil {
+		log.Fatalf("Не удалось считать строки: %v", err)
+	}
+	defer rows.Close()
+
+	var data []CourierCafe
+
+	for rows.Next() {
+		var qi CourierCafe
+		err := rows.Scan(&qi.CourierId, &qi.CafeId)
+		if err != nil {
+			log.Fatalf("Проблема с сканированием: %v\n", err)
+		}
+		data = append(data, qi)
+	}
+	return data
+}

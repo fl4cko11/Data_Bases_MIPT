@@ -193,3 +193,107 @@ func PieChartCafeRating() {
 		log.Fatalf("Не удалось запустить браузер: %v", err)
 	}
 }
+
+func RelationGraphCourierCafe() {
+	dbURL := "postgres://postgres:gbfh78psql@localhost:5432/hw_mipt_db_2025"
+	data := ScanDBCourierCafeRelation(dbURL)
+
+	nodeMap := make(map[string]struct{}) // для проверки наличия узла
+	nodes := make([]opts.GraphNode, 0)
+	links := make([]opts.GraphLink, 0)
+
+	// Добавим категории для узлов: 0 - Курьеры, 1 - Кафе
+	categories := []*opts.GraphCategory{
+		{Name: "Courier"},
+		{Name: "Cafe"},
+	}
+
+	// Добавляем узлы и ссылки
+	addNode := func(name string, category int) {
+		if _, exists := nodeMap[name]; !exists {
+			nodeMap[name] = struct{}{}
+			nodes = append(nodes, opts.GraphNode{
+				Name:       name,
+				Category:   category,
+				SymbolSize: 20, // размер узла (можно менять)
+			})
+		}
+	}
+
+	for _, rel := range data {
+		courierName := fmt.Sprintf("Courier #%d", rel.CourierId)
+		cafeName := fmt.Sprintf("Cafe #%d", rel.CafeId)
+
+		addNode(courierName, 0)
+		addNode(cafeName, 1)
+
+		// Создаем ребро из курьера в кафе
+		links = append(links, opts.GraphLink{
+			Source: courierName,
+			Target: cafeName,
+		})
+	}
+
+	// Создаем граф
+	graph := charts.NewGraph()
+
+	graph.SetGlobalOptions(
+		charts.WithInitializationOpts(opts.Initialization{
+			Theme:  types.ThemeWesteros,
+			Width:  "1800px",
+			Height: "1400px",
+		}),
+		charts.WithTitleOpts(opts.Title{
+			Title:    "Связи Курьеров и Кафе",
+			Subtitle: "Граф связей",
+		}),
+		charts.WithLegendOpts(opts.Legend{
+			Show:   opts.Bool(true),
+			Data:   []string{"Courier", "Cafe"},
+			Top:    "20%",
+			Left:   "left",
+			Orient: "vertical",
+		}),
+		charts.WithTooltipOpts(opts.Tooltip{
+			Show:    opts.Bool(true),
+			Trigger: "item",
+		}),
+		charts.WithGridOpts(opts.Grid{
+			Top: "25%", // например, 25% или в пикселях "150px" — подберите удобное значение
+		}),
+	)
+
+	graph.AddSeries("relation", nodes, links,
+		charts.WithGraphChartOpts(opts.GraphChart{
+			Layout:             "force",
+			FocusNodeAdjacency: opts.Bool(true),
+			Categories:         categories,
+			Roam:               opts.Bool(true),
+			Force: &opts.GraphForce{
+				Repulsion:  1000, // Увеличиваем отталкивание
+				Gravity:    0.1,  // Уменьшаем гравитацию (чтобы узлы не скучивались в центре)
+				EdgeLength: 200,  // Увеличиваем длину связей
+			},
+		}),
+		charts.WithLabelOpts(opts.Label{Show: opts.Bool(true)}),
+	)
+
+	f, err := os.Create("courier_cafe_graph.html")
+	if err != nil {
+		log.Fatalf("Ошибка создания файла: %v", err)
+	}
+	defer f.Close()
+
+	err = graph.Render(f)
+	if err != nil {
+		log.Fatalf("Ошибка рендеринга графа: %v", err)
+	}
+
+	log.Println("Граф связей успешно сохранен в courier_cafe_graph.html")
+
+	cmd := exec.Command("google-chrome-stable", "/home/vladh/git-repos/Data_Bases_MIPT/Delivery_DB_Project/analysis/cmd/courier_cafe_graph.html")
+	err_ := cmd.Run()
+	if err_ != nil {
+		log.Fatalf("Не удалось запустить браузер: %v", err)
+	}
+}
