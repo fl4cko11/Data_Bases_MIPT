@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS dp.a_orders (
     client_id int,
     quantity int NOT NULL CHECK (quantity > 0),
     PRIMARY KEY(order_id, order_item, date),
-    FOREIGN KEY(client_id) REFERENCES dp.clients(client_id) 
+    FOREIGN KEY(client_id) REFERENCES dp.clients(client_id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS dp.h_orders (
@@ -55,8 +55,8 @@ CREATE TABLE IF NOT EXISTS dp.orders_in_cafe (
     order_id int,
     cafe_id int,
     PRIMARY KEY (order_id, cafe_id),
-    FOREIGN KEY (order_id) REFERENCES dp.a_orders(order_id),
-    FOREIGN KEY (cafe_id) REFERENCES dp.cafes(cafe_id)
+    FOREIGN KEY (order_id) REFERENCES dp.a_orders(order_id) ON DELETE CASCADE,
+    FOREIGN KEY (cafe_id) REFERENCES dp.cafes(cafe_id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS dp.active_couriers (
@@ -64,6 +64,6 @@ CREATE TABLE IF NOT EXISTS dp.active_couriers (
     courier_id int,
     cafe_id int,
     PRIMARY KEY (order_id, cafe_id, courier_id),
-    FOREIGN KEY (order_id, cafe_id) REFERENCES dp.orders_in_cafe(order_id,cafe_id),
-    FOREIGN KEY (courier_id) REFERENCES dp.couriers(courier_id)
+    FOREIGN KEY (order_id, cafe_id) REFERENCES dp.orders_in_cafe(order_id, cafe_id) ON DELETE CASCADE,
+    FOREIGN KEY (courier_id) REFERENCES dp.couriers(courier_id) ON DELETE CASCADE
 );

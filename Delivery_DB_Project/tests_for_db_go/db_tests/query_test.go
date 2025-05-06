@@ -6,11 +6,12 @@ import (
 	"os"
 	"path/filepath"
 	"testing"
+	"tests_for_db_go/ORM"
 
 	"github.com/jackc/pgx/v5"
 )
 
-func TestAllQueries(t *testing.T) {
+func TestAllQueriesAsserts(t *testing.T) {
 	dbURL := "postgres://postgres:gbfh78psql@localhost:5432/hw_mipt_db_2025"
 	ctx := context.Background()
 
@@ -74,5 +75,55 @@ func TestAllQueries(t *testing.T) {
 				t.Errorf("Неверный результат для %s: ожидалось %v, получили %v", tc.fileName, tc.expectedValue, val)
 			}
 		})
+	}
+}
+
+func TestGetPopularClientQuery(t *testing.T) {
+	dbURL := "postgres://postgres:gbfh78psql@localhost:5432/hw_mipt_db_2025"
+	OrmResult := ORM.GetMostPopularClient(dbURL, "dp.h_orders")
+
+	ctx := context.Background()
+
+	conn, err := pgx.Connect(ctx, dbURL)
+	if err != nil {
+		log.Fatalf("Не удалось подключиться к базе данных: %v", err)
+	}
+	defer conn.Close(ctx)
+
+	row := conn.QueryRow(ctx, "SELECT client_id FROM (SELECT client_id, COUNT(dp.h_orders.client_id) AS count FROM dp.h_orders GROUP BY dp.h_orders.client_id ORDER BY count DESC LIMIT 1);")
+
+	var SqlResult int
+	err = row.Scan(&SqlResult)
+	if err != nil {
+		t.Fatalf("Ошибка при выполнении запроса или чтении результата: %v", err)
+	}
+
+	if OrmResult != SqlResult {
+		t.Errorf("Неверный результат: ожидалось %v, получили %v", OrmResult, SqlResult)
+	}
+}
+
+func TestGetUnpopularClientQuery(t *testing.T) {
+	dbURL := "postgres://postgres:gbfh78psql@localhost:5432/hw_mipt_db_2025"
+	OrmResult := ORM.GetMostUnpopularClient(dbURL, "dp.h_orders")
+
+	ctx := context.Background()
+
+	conn, err := pgx.Connect(ctx, dbURL)
+	if err != nil {
+		log.Fatalf("Не удалось подключиться к базе данных: %v", err)
+	}
+	defer conn.Close(ctx)
+
+	row := conn.QueryRow(ctx, "SELECT client_id FROM (SELECT client_id, COUNT(dp.h_orders.client_id) AS count FROM dp.h_orders GROUP BY dp.h_orders.client_id ORDER BY count ASC LIMIT 1);")
+
+	var SqlResult int
+	err = row.Scan(&SqlResult)
+	if err != nil {
+		t.Fatalf("Ошибка при выполнении запроса или чтении результата: %v", err)
+	}
+
+	if OrmResult != SqlResult {
+		t.Errorf("Неверный результат: ожидалось %v, получили %v", OrmResult, SqlResult)
 	}
 }
