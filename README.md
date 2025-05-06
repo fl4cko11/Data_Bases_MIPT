@@ -7,3 +7,5 @@
 2) Подробную **работу над проектированием собственной базы данных** ([База Данных для службы доставки](https://github.com/fl4cko11/Data_Bases_MIPT/tree/main/Delivery_DB_Project)):
    1) Концептуальное, логическое, физическое проектирование
    2) Создание представлений, индексов, триггеров, функций
+   3) [ORM и Assert Тестирование](https://github.com/fl4cko11/Data_Bases_MIPT/tree/main/Delivery_DB_Project/tests_for_db_go)
+   4) [Анализ с построением диаграмм](https://github.com/fl4cko11/Data_Bases_MIPT/tree/main/Delivery_DB_Project/analysis)
