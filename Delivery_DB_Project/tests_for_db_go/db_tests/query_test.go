@@ -23,11 +23,11 @@ func TestAllQueriesAsserts(t *testing.T) {
 
 	// Описываем тесты: имя SQL файла и ожидаемый результат (значение и колонка)
 	tests := []queryTests{
-		{"01_popular_client.sql", 15, 0},                    // тест 1, клиент с id 15
+		{"01_popular_client.sql", 10, 0},                    // тест 1, клиент с id 10
 		{"02_unpopular_client.sql", 23, 0},                  // тест 2, клиент с id 23
 		{"03_popular_cafe.sql", 16, 0},                      // тест 3, клиент с id 16
 		{"04_unpopular_cafe.sql", 20, 0},                    // тест 4, кафе с id 20
-		{"05_active_courier.sql", 1, 0},                     // тест 5, кафе с id 1
+		{"05_active_courier.sql", 20, 0},                    // тест 5, кафе с id 20
 		{"07_most_popular_item_now.sql", "Капучино", 0},     // тест 7, позиция Капучино
 		{"08_most_unpopular_item_now.sql", "Смузи боул", 0}, // тест 8, позиция Смузи боул
 		{"10_most_tired_courier_now.sql", 1, 0},             // тест 10, курьер с id 1

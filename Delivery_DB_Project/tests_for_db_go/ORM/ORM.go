@@ -33,6 +33,7 @@ func GetMostUnpopularClient(dbURL string, table_name string) int {
 	var minClientId int
 	for key := range countMap {
 		minClientId = key
+		break
 	}
 
 	minCount := countMap[minClientId]
